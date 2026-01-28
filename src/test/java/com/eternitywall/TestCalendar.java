@@ -77,7 +77,7 @@ public class TestCalendar {
                 BigInteger privKey = new BigInteger(wifKey);
                 key = ECKey.fromPrivate(privKey);
             } catch (Exception e) {
-                DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(MainNetParams.get(), wifKey);
+                DumpedPrivateKey dumpedPrivateKey = DumpedPrivateKey.fromBase58(MainNetParams.get(), wifKey);
                 key = dumpedPrivateKey.getKey();
             }
 
@@ -115,7 +115,7 @@ public class TestCalendar {
 
             Calendar calendar = new Calendar(calendarUrl);
             ECKey key;
-            DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(MainNetParams.get(), wifKey);
+            DumpedPrivateKey dumpedPrivateKey = DumpedPrivateKey.fromBase58(MainNetParams.get(), wifKey);
             key = dumpedPrivateKey.getKey();
             calendar.setKey(key);
             Timestamp timestamp = calendar.submit(digest);

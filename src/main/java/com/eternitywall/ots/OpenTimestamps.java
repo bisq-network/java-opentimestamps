@@ -217,7 +217,7 @@ public class OpenTimestamps {
                     key = ECKey.fromPrivate(privKey);
                 } catch (Exception e) {
                     try {
-                        DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(MainNetParams.get(), signature);
+                        DumpedPrivateKey dumpedPrivateKey = DumpedPrivateKey.fromBase58(MainNetParams.get(), signature);
                         key = dumpedPrivateKey.getKey();
                     } catch (Exception err) {
                         log.severe("Invalid private key");
