@@ -6,8 +6,8 @@ import com.eternitywall.ots.exceptions.DeserializationException;
 import com.eternitywall.ots.op.Op;
 import com.eternitywall.ots.op.OpBinary;
 import com.eternitywall.ots.op.OpSHA256;
-import org.bitcoinj.core.NetworkParameters;
 import org.bitcoinj.core.Transaction;
+import org.bitcoinj.params.MainNetParams;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -384,7 +384,7 @@ public class Timestamp {
                 Op op = entry.getKey();
 
                 try {
-                    Transaction transaction = new Transaction(NetworkParameters.prodNet(), this.msg);
+                    Transaction transaction = new Transaction(MainNetParams.get(), this.msg);
                     byte[] tx = Utils.arrayReverse(new OpSHA256().call(new OpSHA256().call(this.msg)));
                     builder.append(Timestamp.indention(indent) + "# Bitcoin transaction id " + Utils.bytesToHex(tx).toLowerCase() + "\n");
                 } catch (Exception err) {
@@ -407,7 +407,7 @@ public class Timestamp {
                 Op op = entry.getKey();
 
                 try {
-                    Transaction transaction = new Transaction(NetworkParameters.prodNet(), this.msg);
+                    Transaction transaction = new Transaction(MainNetParams.get(), this.msg);
                     byte[] tx = Utils.arrayReverse(new OpSHA256().call(new OpSHA256().call(this.msg)));
                     builder.append(Timestamp.indention(indent) + "# Bitcoin transaction id " + Utils.bytesToHex(tx).toLowerCase() + "\n");
                 } catch (Exception err) {

@@ -7,7 +7,7 @@ import com.eternitywall.ots.Timestamp;
 import com.eternitywall.ots.Utils;
 import org.bitcoinj.core.DumpedPrivateKey;
 import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.NetworkParameters;
+import org.bitcoinj.params.MainNetParams;
 import org.junit.Test;
 
 import java.io.FileInputStream;
@@ -77,7 +77,7 @@ public class TestCalendar {
                 BigInteger privKey = new BigInteger(wifKey);
                 key = ECKey.fromPrivate(privKey);
             } catch (Exception e) {
-                DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(NetworkParameters.prodNet(), wifKey);
+                DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(MainNetParams.get(), wifKey);
                 key = dumpedPrivateKey.getKey();
             }
 
@@ -115,7 +115,7 @@ public class TestCalendar {
 
             Calendar calendar = new Calendar(calendarUrl);
             ECKey key;
-            DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(NetworkParameters.prodNet(), wifKey);
+            DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(MainNetParams.get(), wifKey);
             key = dumpedPrivateKey.getKey();
             calendar.setKey(key);
             Timestamp timestamp = calendar.submit(digest);
