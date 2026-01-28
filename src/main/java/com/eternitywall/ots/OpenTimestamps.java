@@ -11,8 +11,7 @@ import com.eternitywall.ots.op.OpCrypto;
 import com.eternitywall.ots.op.OpSHA256;
 import org.bitcoinj.core.DumpedPrivateKey;
 import org.bitcoinj.core.ECKey;
-import org.bitcoinj.core.NetworkParameters;
-
+import org.bitcoinj.params.MainNetParams;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -218,7 +217,7 @@ public class OpenTimestamps {
                     key = ECKey.fromPrivate(privKey);
                 } catch (Exception e) {
                     try {
-                        DumpedPrivateKey dumpedPrivateKey = new DumpedPrivateKey(NetworkParameters.prodNet(), signature);
+                        DumpedPrivateKey dumpedPrivateKey = DumpedPrivateKey.fromBase58(MainNetParams.get(), signature);
                         key = dumpedPrivateKey.getKey();
                     } catch (Exception err) {
                         log.severe("Invalid private key");

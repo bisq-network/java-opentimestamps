@@ -1,5 +1,6 @@
 package com.eternitywall.ots;
 
+import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.logging.ConsoleHandler;
@@ -27,7 +28,7 @@ public class Utils {
      * Returns the first value that is not null. If all objects are null, then it returns null.
      *
      * @param items the array of Ts
-     * @param <T> This describes my type parameter
+     * @param <T>   This describes my type parameter
      * @return the first value that is not null. If all objects are null, then it returns null.
      * @deprecated Not used by Java OpenTimestamps itself, and doesn't offer much useful functionality.
      */
@@ -113,7 +114,7 @@ public class Utils {
     /**
      * Compares two byte arrays.
      *
-     * @param left the left byte array to compare with
+     * @param left  the left byte array to compare with
      * @param right the right byte array to compare with
      * @return 0 if the arrays are identical, negative if left &lt; right, positive if left &gt; right
      */
@@ -172,20 +173,6 @@ public class Utils {
         }
 
         return data;
-    }
-
-    /**
-     * Does exactly the same as {@link org.bitcoinj.core.Utils#toBytes(CharSequence, String) org.bitcoinj.core.Utils#toBytes(CharSequence, String)},
-     * i.e. gets the bytes out of the String with the passed in encoding
-     *
-     * @param str the string to convert to a byte array
-     * @param encode the encoding to be used when converting the string to a byte array
-     * @return byte array
-     * @deprecated Use {@link org.bitcoinj.core.Utils#toBytes(CharSequence, String) org.bitcoinj.core.Utils#toBytes(CharSequence, String)} directly
-     */
-    @Deprecated
-    public static byte[] toBytes(String str, String encode) {
-        return org.bitcoinj.core.Utils.toBytes(str, encode);
     }
 
     /**
